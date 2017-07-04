@@ -1,0 +1,4 @@
+<apex:page controller="LogInLogOutPlayerController" standardStylesheets="true" showHeader="false" action="{!logOut}">
+    <apex:pageMessages />
+    <p>Bye!</p>
+</apex:page>

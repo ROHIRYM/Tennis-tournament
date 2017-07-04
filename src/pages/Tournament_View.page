@@ -1,0 +1,89 @@
+<apex:page id="page" controller="TournamentController" tabstyle="Tournament__c" standardStylesheets="true" showHeader="false" cache="false" action="{!view}">
+    <h1>Tournament information</h1>
+    
+    <a href="myHome">Home</a>
+    <a href="Profile">Profile</a>
+    <a href="Tournaments">Tournaments</a>
+    <a href="Log_out_player">Log out</a>
+    
+    <p>Id: {!tournament.Id}</p>
+    <p>Name: {!tournament.Name}</p>
+    <p>Type: {!tournament.Type__c}</p>
+    <p>Format: {!tournament.Format__c}</p>
+    <p>Status: {!tournament.Status__c}</p>
+    <p>Start Date: {!tournament.Start_Date__c}</p>
+    <p>Finish Date: {!tournament.Finish_Date__c}</p>
+    <br></br>
+    <apex:pageMessages />
+    <apex:pageBlock rendered="{!isUpcomingTournament && !isAppliedToTournament}">
+        <a href="Tournament_Apply?id={!tournament.Id}">Apply</a>
+    </apex:pageBlock>
+    <apex:form rendered="{!isManager && !areActiveTournaments && isUpcomingTournament}">
+        <apex:commandButton action="{!start}" value="Start"></apex:commandButton>
+    </apex:form>
+    <!--  <a href="Tournament_Start?id={!tournament.Id}">Start</a>-->
+    <apex:pageBlock rendered="{!isManager && isUpcomingTournament}">
+        <a href="Tournament_Create?id={!tournament.Id}">Edit</a>
+        <a href="Tournament_Delete?id={!tournament.Id}">Delete</a>
+    </apex:pageBlock>
+    
+    <apex:pageBlock rendered="{!participants != null}">
+        <h2>Participants:</h2>
+        <ol>
+        	<apex:repeat value="{!participants}" var="name">
+        		<li>{!name}</li>
+        	</apex:repeat>
+        </ol>
+        <apex:pageBlock rendered="{!participantsSize == 0}">
+        	No participants
+        </apex:pageBlock>
+    </apex:pageBlock>
+    
+    <!-- Round Robin Table -->
+    <table align="center" style="width: 950px;">
+    	<apex:repeat value="{!rrMatrix}" var="row">
+    		<tr>
+    			<apex:repeat value="{!row}" var="s">
+    				<td>{!s}</td>
+    			</apex:repeat>
+    		</tr>
+    	</apex:repeat>
+    </table>
+    <br></br>
+    <br></br>
+    <!-- Round Robin Statistics -->
+    <apex:pageBlock rendered="{!sortedParticipants != null}">
+    	<table align="center" style="width: 500px;">
+    		<tr>
+    			<td>Participant name</td>
+    			<td>Won games</td>
+    			<td>Won sets</td>
+    		</tr>
+    		<apex:repeat value="{!sortedParticipants}" var="tps">
+    			<tr>
+    				<td>{!idNameMap[tps.id]}</td>
+    				<td>{!tps.wonGames}</td>
+    				<td>{!tps.wonSets}</td>
+    			</tr>
+    		</apex:repeat>
+    	</table>
+    </apex:pageBlock>
+    <!-- Single Elimination Table -->
+    <table align="center" style="width: 950px;">
+    	<tr>
+    		<apex:repeat value="{!setMatrix}" var="roundGames">
+    			<td>    		
+    				<apex:repeat value="{!roundGames}" var="g">
+    					<ul>
+    						<li>{!g.firstCompetitor__c}</li>
+    						<li style="list-style-position:inside;">{!g.firstCompetitorScore__c}</li>
+    						<li style="list-style-position:inside;">{!g.secondCompetitorScore__c}</li>
+    						<li>{!g.secondCompetitor__c}</li>
+    					</ul>
+    				</apex:repeat>
+    			</td>
+    		</apex:repeat>
+    	</tr>
+    </table>
+    
+</apex:page>

@@ -1,0 +1,4 @@
+<apex:page >
+<h1>Out of date confirmation</h1>
+<a href="myHome">Home</a>
+</apex:page>

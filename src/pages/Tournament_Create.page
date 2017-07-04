@@ -1,0 +1,22 @@
+<apex:page controller="TournamentController" tabstyle="Tournament__c" standardStylesheets="true" showHeader="false" cache="false" action="{!edit}">
+	<h1>Tournament</h1>
+	<a href="myHome">Home</a>
+	<a href="Profile">Profile</a>
+	<a href="Tournaments">Tournaments</a>
+	<a href="Log_out_player">Log out</a>
+    <apex:form >
+        <apex:pageBlock mode="edit">
+            <apex:pageMessages />
+            <apex:pageBlockSection >
+                <apex:inputField value="{!tournament.Name}" required="true"/>
+                <apex:inputField value="{!tournament.Type__c}"/>
+                <apex:inputField value="{!tournament.Format__c}"/>
+                <apex:inputField value="{!tournament.Start_Date__c}"/>
+                <apex:inputField value="{!tournament.Finish_Date__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save" action="{!save}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

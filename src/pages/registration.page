@@ -1,0 +1,4 @@
+<apex:page controller="Player_RegConfirmController" standardStylesheets="true" showHeader="false" action="{!checkAndRedirect}">
+Hi
+<apex:pageMessages />
+</apex:page>

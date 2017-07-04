@@ -1,0 +1,7 @@
+<apex:page standardStylesheets="true" showHeader="false" cache="true">
+	<h1>Congratulations</h1>
+	<a href="Profile">Profile</a>
+	<a href="Tournaments">Tournaments</a>
+	<a href="Log_out_player">Log out</a>
+	<p>You have just applied to the tournament</p>
+</apex:page>

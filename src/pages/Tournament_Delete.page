@@ -1,0 +1,10 @@
+<apex:page controller="TournamentController"  action="{!deleteUpcoming}">
+	<h1>Delete</h1>
+
+	<a href="myHome">Home</a>
+	<a href="Profile">Profile</a>
+	<a href="Tournaments">Tournaments</a>
+	<a href="Log_out_player">Log out</a>
+
+	<p>Tournament has been deleted</p>
+</apex:page>

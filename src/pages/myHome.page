@@ -1,0 +1,42 @@
+<apex:page controller="MyHomeController" cache="false" standardStylesheets="true" showHeader="false">
+	<h1>HOME PAGE</h1>
+  	<p>This is tennis tournament home page</p>
+  	<apex:pageMessages />
+  	<apex:pageBlock rendered="{!isNotLogedIn}">
+  		<a href="Log_in_player">Log in</a>
+		<a href="Player_Registration">Register player</a>
+	</apex:pageBlock>
+	<apex:pageBlock rendered="{!isNotLogedIn==false}">
+		<a href="Profile">Profile</a>
+		<a href="Tournaments">Tournaments</a>
+		<a href="Log_out_player">Log out</a>
+	</apex:pageBlock>
+	<apex:pageBlock rendered="{!isManager}">
+		<a href="Manage">Manage</a>
+	</apex:pageBlock>
+	<h2>About tennis</h2>
+	<p>Tennis is a racket sport that can be played individually against a single opponent
+	 (singles) or between two teams of two players each (doubles). Each player uses a tennis 
+	 racket that is strung with cord to strike a hollow rubber ball covered with felt over or 
+	 around a net and into the opponent's court. The object of the game is to play the ball in 
+	 such a way that the opponent is not able to play a valid return. The player who is unable 
+	 to return the ball will not gain a point, while the opposite player will.</p>
+	 <p>Tennis is an Olympic sport and is played at all levels of society and at all ages. The sport can 
+	 be played by anyone who can hold a racket, including wheelchair users. The modern game of 
+	 tennis originated in Birmingham, England, in the late 19th century as "lawn tennis".[1] It 
+	 had close connections both to various field ("lawn") games such as croquet and bowls as well
+   	 as to the older racket sport of real tennis. During most of the 19th century, in fact, the
+     term "tennis" referred to real tennis, not lawn tennis: for example, in Disraeli's novel 
+     Sybil (1845), Lord Eugene De Vere announces that he will "go down to Hampton Court and 
+     play tennis."[2]</p>
+     <p>The rules of tennis have changed little since the 1890s. Two exceptions are that from 1908 
+     to 1961 the server had to keep one foot on the ground at all times, and the adoption of the tiebreak in 
+     the 1970s. A recent addition to professional tennis has been the adoption of electronic review technology 
+     coupled with a point challenge system, which allows a player to contest the line call of a point, a system 
+     known as Hawk-Eye.</p>
+     <p>Tennis is played by millions of recreational players and is also a popular worldwide spectator sport. The 
+     four Grand Slam tournaments (also referred to as the "Majors") are especially popular: 
+     the Australian Open played on hard courts, the French Open played on red clay
+ 	 courts, Wimbledon played on grass courts, and the US Open played also on hard courts.</p>
+ 	 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Centre_Court.jpg/800px-Centre_Court.jpg" style="width:30%;height:30%;"></img>
+</apex:page>

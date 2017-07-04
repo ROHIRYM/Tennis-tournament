@@ -1,0 +1,21 @@
+<apex:page controller="PlayerTeamController" action="{!checkLogIn}">
+	<h1>Create Team</h1>
+	<a href="Profile">Profile</a>
+	<a href="Tournaments">Tournaments</a>
+	<a href="Log_out_player">Log out</a>
+	<apex:form >
+        <apex:pageBlock mode="edit">
+            <apex:pageMessages />
+            <apex:pageBlockSection >
+                <apex:inputField value="{!team.Name}" required="true"/>
+                <!--<apex:inputField value="{!secondPlayerTeam.Player_Id__c}"/>-->
+                <apex:selectList value="{!selectedPlayer}" size="1" required="true">
+          			<apex:selectOptions value="{!playersOptions}"></apex:selectOptions>
+      			</apex:selectList>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save" action="{!create}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

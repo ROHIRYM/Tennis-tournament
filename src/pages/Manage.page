@@ -1,0 +1,10 @@
+<apex:page controller="ManagerController" cache="false" action="{!checkManager}">
+	<h1>Manager page</h1>
+	<a href="myHome">Home</a>
+	<a href="Profile">Profile</a>
+	<a href="Log_out_player">Log out</a>
+	<div style="background-color: yellow">
+		<a href="Tournament_Create">Create Tournament</a><br></br>
+		<a href="Tournaments">Tournaments</a>
+	</div>
+</apex:page>

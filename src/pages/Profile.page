@@ -1,0 +1,87 @@
+<apex:page controller="ProfileController" showHeader="false" cache="false" action="{!checkLogIn}">
+	<h1>My Profile</h1>
+	<a href="myHome">Home</a>
+	<a href="Tournaments">Tournaments</a>
+	<a href="Log_out_player">Log out</a>
+	<apex:pageBlock rendered="{!isLoggedIn}">
+		<dl>
+			<dt>Id</dt>
+  				<dd>{!player.Id}</dd>
+  			<dt>Name</dt>
+  				<dd>{!player.Name}</dd>
+  			<dt>Email</dt>
+  				<dd>{!player.E_mail__c}</dd>
+		</dl>
+	</apex:pageBlock>
+	<apex:pageBlock rendered="{!isLoggedIn}">
+		<apex:pageBlock rendered="{!currentTournament != null}">
+			<h2 style="display: block; clear: both;">Your current tournament:</h2>
+			<dl style="display: block; float: left;">
+				<dt>Id:</dt>
+  					<dd>{!currentTournament.Id}</dd>
+  				<dt>Name:</dt>
+  					<dd>{!currentTournament.Name}</dd>
+  				<dt>Type:</dt>
+  					<dd>{!currentTournament.Type__c}</dd>
+  				<dt>Format:</dt>
+  					<dd>{!currentTournament.Format__c}</dd>
+			</dl>
+			<div style="display: block; float: left;">
+			<apex:pageBlockSection rendered="{!teamMate != null}">
+				<dl>
+  					<dt>Team name:</dt>
+  						<dd>{!currentTournament.Teams__r[0].Name}</dd>
+  					<dt>Teammate name:</dt>
+  						<dd>{!teamMate.Name}</dd>
+  				</dl>
+  			</apex:pageBlockSection>
+  			</div>
+			<h2 style="display: block; clear: both;">Games to play:</h2>
+			<apex:repeat value="{!games}" var="g">
+    			<p>
+    				<a href="InsertScore?gameid={!g.Id}">Competition between: {!idNameMap[g.firstCompetitor__c]} and {!idNameMap[g.secondCompetitor__c]}</a>
+    			</p>
+			</apex:repeat>
+		</apex:pageBlock>
+		<apex:pageBlock rendered="{!playerTournaments != null}">
+			<h2>All your single tournaments:</h2>
+			<table style="width: 800px;">
+				<tr>
+					<th>Name</th>
+    				<th>Type</th>
+    				<th>Format</th>
+    				<th>Status</th>
+				</tr>
+				<apex:repeat value="{!playerTournaments}" var="tournament">
+					<tr>
+						<td>{!tournament.Name}</td>
+						<td>{!tournament.Type__c}</td>
+						<td>{!tournament.Format__c}</td>
+						<td>{!tournament.Status__c}</td>
+					</tr>
+				</apex:repeat>
+			</table>
+		</apex:pageBlock>
+		<apex:pageBlock rendered="{!teamTournaments != null}">
+			<h2>All your team tournaments:</h2>
+			<table style="width: 1000px;">
+				<tr>
+					<th>Name</th>
+    				<th>Type</th>
+    				<th>Format</th>
+    				<th>Status</th>
+    				<th>Team name</th>
+				</tr>
+				<apex:repeat value="{!teamTournaments}" var="tournament">
+					<tr>
+						<td>{!tournament.Name}</td>
+						<td>{!tournament.Type__c}</td>
+						<td>{!tournament.Format__c}</td>
+						<td>{!tournament.Status__c}</td>
+						<td>{!tournament.Teams__r[0].Name}</td>
+					</tr>
+				</apex:repeat>
+			</table>
+		</apex:pageBlock>
+	</apex:pageBlock>
+</apex:page>

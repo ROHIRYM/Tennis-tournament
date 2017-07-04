@@ -1,0 +1,19 @@
+<apex:page controller="Player_RegistrationController" tabstyle="Player__c" standardStylesheets="true" showHeader="false" cache="false" action="{!registerPageCheck}">
+	<h1>Registration page</h1>
+	<a href="myHome">Home</a>
+	<a href="Log_in_player">Log in</a>
+    <apex:form >
+        <apex:pageBlock mode="edit">
+            <apex:pageMessages />
+            <apex:pageBlockSection >
+                <apex:inputField value="{!player.Name}" required="true"/>
+                <apex:inputField value="{!player.E_mail__c}"/>
+                <apex:inputSecret value="{!player.Password__c}" required="true"/>
+                <apex:inputSecret label="Confirm password" value="{!confirmPassword}" required="true"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save" action="{!save}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

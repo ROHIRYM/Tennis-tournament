@@ -1,0 +1,51 @@
+<apex:page controller="TournamentController" tabstyle="Tournament__c" standardStylesheets="true" showHeader="false" cache="false" action="{!viewAll}">
+    <style type="text/css">
+        table, tr, th, td { 
+        	border: 1px solid black;
+        }
+    </style>
+	<h1>Tournaments page</h1>
+	<a href="myHome">Home</a>
+	<a href="Profile">Profile</a>
+	<a href="Log_out_player">Log out</a>
+    <apex:form >
+        <apex:pageBlock mode="edit">
+            <apex:pageMessages />
+            <apex:pageBlockSection >
+                <apex:inputField value="{!tournament.Name}" required="false"/>
+                <apex:inputField value="{!tournament.Type__c}" required="false"/>
+                <apex:inputField value="{!tournament.Format__c}" required="false"/>
+                <apex:inputField value="{!tournament.Status__c}" required="false"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="GO" action="{!viewAll}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <h2>Tournaments</h2>
+    <apex:pageBlock rendered="{!tournamentsSize!=0}">
+    <table align="center" style="width: 950px;">
+    	<tr>
+    		<th>Id</th>
+    		<th>Name</th>
+    		<th>Type</th>
+    		<th>Format</th>
+    		<th>Status</th>
+    		<th>View</th>
+    	</tr>
+    	<apex:repeat value="{!tournaments}" var="tournament" id="theRepeat">
+    		<tr>
+    			<td>{!tournament.Id}</td>
+    			<td>{!tournament.Name}</td>
+    			<td>{!tournament.Type__c}</td>
+    			<td>{!tournament.Format__c}</td>
+    			<td>{!tournament.Status__c}</td>
+    			<td><a href="Tournament_View?id={!tournament.Id}" style="color: blue">View</a></td>
+    		</tr>
+    	</apex:repeat>
+    </table>
+    </apex:pageBlock>
+    <apex:pageBlock rendered="{!tournamentsSize==0}">
+    	<p>No such tournaments found</p>
+    </apex:pageBlock>
+</apex:page>

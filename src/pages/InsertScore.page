@@ -1,0 +1,18 @@
+<apex:page controller="GameController" cache="false" action="{!getGameInfo}">
+	<h1>Insert Score</h1>
+	<apex:form >
+		<apex:pageBlock >
+            <apex:pageMessages />
+            <apex:pageBlockSection columns="5">
+            	<apex:outputLabel value="{!idNameMap[insertScoreGame.firstCompetitor__c]}"/>
+                <apex:inputField label="" value="{!insertScoreGame.firstCompetitorScore__c}"/>
+                <apex:outputLabel value="--"/>
+                <apex:inputField label="" value="{!insertScoreGame.secondCompetitorScore__c}"/>
+                <apex:outputLabel value="{!idNameMap[insertScoreGame.secondCompetitor__c]}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Save Score" action="{!insertScore}"/>
+            </apex:pageBlockButtons>
+		</apex:pageBlock>
+    </apex:form> 
+</apex:page>
